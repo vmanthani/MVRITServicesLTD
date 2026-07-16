@@ -155,6 +155,67 @@
     el.textContent = new Date().getFullYear();
   });
 
+  /* ---- Context-aware contact: ?i=<topic> pre-fills form & WhatsApp ---- */
+  var WA_NUMBER = "447446228152";
+  var TOPICS = {
+    custom:       { opt: "Custom software development",        msg: "Hi MVR team, I'd like to discuss a custom software project for my business." },
+    xleshop:      { opt: "XLeShop e-commerce store",           msg: "Hi MVR team, I'd like to launch an online store with XLeShop. Please tell me how to get started." },
+    school:       { opt: "School Management System",           msg: "Hi MVR team, I'd like a demo of the School Management System for our institution." },
+    hospital:     { opt: "Hospital Management System",         msg: "Hi MVR team, I'd like a demo of the Hospital Management System for our clinic/hospital." },
+    sthira:       { opt: "Sthira — Yoga & Wellness App",       msg: "Hi MVR team, I'd like to bring the Sthira yoga & wellness app to my studio." },
+    events:       { opt: "Event registration & QR check-in",   msg: "Hi MVR team, I'm planning an event and would like to use your registration & QR check-in system." },
+    telemarketing:{ opt: "Telemarketing Suite",                msg: "Hi MVR team, I'd like to boost my sales team with your Telemarketing Suite." },
+    payments:     { opt: "Payment gateway integration",        msg: "Hi MVR team, I need a payment gateway integrated into my platform." },
+    comms:        { opt: "WhatsApp / SMS / Email automation",  msg: "Hi MVR team, I'd like to automate WhatsApp/SMS/email messaging for my business." },
+    web:          { opt: "Website design & development",       msg: "Hi MVR team, I'd like a new website for my business." },
+    ai:           { opt: "AI & Agentic AI solutions",          msg: "Hi MVR team, I'm interested in AI / Agentic AI solutions for my organisation." },
+    cloud:        { opt: "Cloud deployment & migration",       msg: "Hi MVR team, I'd like help with cloud deployment or migration." },
+    seo:          { opt: "SEO & digital growth",               msg: "Hi MVR team, I'd like to improve my website's SEO and growth." },
+    domains:      { opt: "Domains, DNS & hosting",             msg: "Hi MVR team, I need help with domains, DNS or hosting." },
+    support:      { opt: "Support & maintenance",              msg: "Hi MVR team, I'm looking for ongoing support & maintenance for my systems." },
+    demo:         { opt: "Something else",                     msg: "Hi MVR team, I'd like a walkthrough of your products." },
+    advice:       { opt: "Something else",                     msg: "Hi MVR team, I'd like some free advice on the right solution for my need." }
+  };
+  function waUrl(msg) {
+    return "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(msg);
+  }
+
+  var params = new URLSearchParams(location.search);
+  var topic = TOPICS[params.get("i")] || null;
+
+  /* Contact form pre-fill */
+  var topicSelect = document.getElementById("topic");
+  var messageBox = document.getElementById("message");
+  if (topicSelect && topic) {
+    for (var oi = 0; oi < topicSelect.options.length; oi++) {
+      if (topicSelect.options[oi].text === topic.opt) { topicSelect.selectedIndex = oi; break; }
+    }
+    if (messageBox && !messageBox.value) messageBox.value = topic.msg + "\n\nA little about my business: ";
+  }
+
+  /* Contact page WhatsApp link carries the same context */
+  var waLink = document.getElementById("wa-link");
+  if (waLink) {
+    waLink.href = waUrl(topic ? topic.msg : "Hi MVR team, I'd like to talk about a project.");
+  }
+
+  /* Floating WhatsApp button on every page (context-aware) */
+  (function () {
+    var pageMsg;
+    if (topic) pageMsg = topic.msg;
+    else if (location.pathname.indexOf("/products") === 0) pageMsg = "Hi MVR team, I'm looking at your products and would like to know more.";
+    else if (location.pathname.indexOf("/services") === 0) pageMsg = "Hi MVR team, I'm looking at your services and would like to know more.";
+    else pageMsg = "Hi MVR team, I found your website and would like to discuss a project.";
+    var a = document.createElement("a");
+    a.className = "wa-float";
+    a.href = waUrl(pageMsg);
+    a.target = "_blank";
+    a.rel = "noopener";
+    a.setAttribute("aria-label", "Chat with us on WhatsApp");
+    a.innerHTML = '<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.2 1.6 6L4 29l8.2-1.6c1.7.9 3.7 1.4 5.8 1.4 6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-1.8 0-3.5-.5-5-1.3l-.4-.2-4.9 1 1-4.7-.3-.4c-1-1.6-1.6-3.4-1.6-5.2 0-5.4 4.4-9.8 9.8-9.8s9.8 4.4 9.8 9.8-4.4 9.8-9.8 9.8zm5.4-7.3c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.2-.5-.3z"/></svg>';
+    document.body.appendChild(a);
+  })();
+
   /* Cookie consent banner */
   var banner = document.getElementById("cookie-banner");
   if (banner) {

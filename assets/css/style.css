@@ -721,6 +721,43 @@ a.tag-link:hover {
   line-height: 1;
 }
 
+/* Floating WhatsApp button */
+.wa-float {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  z-index: 150;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(150deg, #2ee66f, #25d366 60%, #1eb856);
+  box-shadow: 0 6px 22px rgba(37, 211, 102, 0.4), 0 0 40px rgba(37, 211, 102, 0.15);
+  transition: transform 0.2s, box-shadow 0.25s;
+  animation: waPulse 2.6s ease-in-out infinite;
+}
+.wa-float svg { width: 32px; height: 32px; fill: #fff; }
+.wa-float:hover {
+  transform: translateY(-3px) scale(1.06);
+  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.55), 0 0 60px rgba(37, 211, 102, 0.25);
+}
+@keyframes waPulse {
+  0%, 100% { box-shadow: 0 6px 22px rgba(37, 211, 102, 0.4), 0 0 0 0 rgba(37, 211, 102, 0.35); }
+  50%      { box-shadow: 0 6px 22px rgba(37, 211, 102, 0.4), 0 0 0 14px rgba(37, 211, 102, 0); }
+}
+@media (max-width: 768px) {
+  .wa-float { width: 52px; height: 52px; bottom: 18px; right: 18px; }
+  .cookie-banner { right: 84px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wa-float { animation: none; }
+}
+
+.ci-icon.ci-wa { background: rgba(37, 211, 102, 0.12); border-color: rgba(37, 211, 102, 0.35); }
+.ci-icon.ci-wa svg { stroke: #2ee66f; color: #2ee66f; }
+
 .skip-link {
   position: absolute;
   left: -9999px;
