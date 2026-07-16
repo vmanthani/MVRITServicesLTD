@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Domain: mvritservices.com
-Sitemap: https://mvritservices.com/sitemap.xml
+Sitemap: https://www.mvritservices.com/sitemap.xml

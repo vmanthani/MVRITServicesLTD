@@ -1,7 +1,7 @@
 /* MVR IT Services — service worker
    Strategy: network-first for pages (always fresh marketing content),
    cache-first for static assets, offline fallback to cached pages. */
-var VERSION = "mvr-v1";
+var VERSION = "mvr-v2";
 var PRECACHE = [
   "/",
   "/services/",
