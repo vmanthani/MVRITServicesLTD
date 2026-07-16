@@ -24,10 +24,9 @@ Search the whole project for each token:
 
 | Placeholder | Where | Replace with |
 |---|---|---|
-| `[COMPANY-NUMBER]` | every footer + legal pages | Companies House registration number (legally required on the site for a UK LTD) |
 | `YOUR_FORM_ID` | `contact.html` form action | Formspree form ID (free at formspree.io) — needed because GitHub Pages has no backend |
 
-Already filled in: contact email (sales@mvritservices.com), phone (07446 228152), registered office (Reading, United Kingdom), domain (mvritservices.com in CNAME/sitemap/robots).
+Already filled in: company number (10251131), contact email (sales@mvritservices.com), phone (07446 228152), registered office (Reading, United Kingdom), domain (mvritservices.com).
 
 Also have a solicitor review `privacy.html` and `terms.html` — they are solid UK-oriented starting templates, not legal advice.
 
