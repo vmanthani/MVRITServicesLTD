@@ -24,9 +24,9 @@ Search the whole project for each token:
 
 | Placeholder | Where | Replace with |
 |---|---|---|
-| `YOUR_FORM_ID` | `contact.html` form action | Formspree form ID (free at formspree.io) — needed because GitHub Pages has no backend |
+| *(none — all placeholders filled)* | | |
 
-Already filled in: company number (10251131), contact email (sales@mvritservices.com), phone (07446 228152), registered office (Reading, United Kingdom), domain (mvritservices.com).
+Contact form uses FormSubmit.co (free, no account) delivering to sales@mvritservices.com — the FIRST submission emails a one-time activation link to that inbox; click it once. Success redirect: thanks.html.
 
 Also have a solicitor review `privacy.html` and `terms.html` — they are solid UK-oriented starting templates, not legal advice.
 

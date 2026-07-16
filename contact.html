@@ -55,14 +55,16 @@
           <div class="card reveal">
             <h3 style="margin-bottom:22px;">Send us a message</h3>
             <!--
-              CONTACT FORM SETUP (one-time, ~2 minutes):
-              GitHub Pages is static, so the form needs a form backend.
-              1. Create a free account at https://formspree.io (or formsubmit.co)
-              2. Create a form and copy its endpoint
-              3. Replace YOUR_FORM_ID in the action below.
-              Until then, the mailto link on the right works out of the box.
+              Form backend: FormSubmit.co (free, no account).
+              ONE-TIME ACTIVATION: the first submission triggers a confirmation
+              email to sales@mvritservices.com — click the link in it once and
+              all future submissions are delivered normally.
             -->
-            <form class="form-grid" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <form class="form-grid" action="https://formsubmit.co/sales@mvritservices.com" method="POST">
+              <input type="hidden" name="_subject" value="New enquiry — mvritservices.com">
+              <input type="hidden" name="_template" value="table">
+              <input type="hidden" name="_next" value="https://mvritservices.com/thanks.html">
+              <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
               <div class="form-row">
                 <div class="field">
                   <label for="name">Your name *</label>
