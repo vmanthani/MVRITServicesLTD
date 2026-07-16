@@ -5,34 +5,58 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Page Not Found — MVR IT Services LTD</title>
   <meta name="robots" content="noindex">
-  <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/style.css">
-  <!--
-    NOTE: This page uses root-absolute paths (/assets/...) because GitHub Pages
-    serves 404.html from any URL depth. If the site is deployed as a PROJECT page
-    (username.github.io/repo-name), change "/assets/..." and links below to
-    "/repo-name/assets/..." etc. On a custom domain or user page, leave as is.
-  -->
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <!-- Self-contained: GitHub Pages serves 404.html from any URL depth, on both
+       project pages (user.github.io/repo/) and custom domains, so this page
+       inlines its styles and computes the home link at runtime. -->
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+      background: #06080f; color: #b7bfd2;
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      text-align: center; overflow: hidden; position: relative;
+    }
+    .orb { position: absolute; border-radius: 50%; filter: blur(90px); opacity: .5; pointer-events: none; }
+    .orb-gold { width: 520px; height: 520px; background: radial-gradient(circle, rgba(247,201,72,.4), transparent 65%); top: -140px; right: -120px; }
+    .orb-violet { width: 480px; height: 480px; background: radial-gradient(circle, rgba(124,92,255,.35), transparent 65%); bottom: -180px; left: -140px; }
+    .wrap { position: relative; z-index: 2; padding: 24px; }
+    .code {
+      font-family: "Sora", "Segoe UI", sans-serif; font-weight: 800; line-height: 1;
+      font-size: clamp(5rem, 16vw, 10rem);
+      background: linear-gradient(120deg, #ffe29a 0%, #f7c948 30%, #ff9d2e 60%, #7c5cff 110%);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent; color: transparent;
+    }
+    h1 { font-family: "Sora", sans-serif; color: #f4f6fb; font-size: 1.6rem; margin: 18px 0 12px; }
+    p { max-width: 480px; margin: 0 auto 32px; line-height: 1.7; }
+    .btn {
+      display: inline-block; font-family: "Sora", sans-serif; font-weight: 600;
+      padding: 14px 30px; border-radius: 999px; text-decoration: none; color: #1a1204;
+      background: linear-gradient(120deg, #ffe29a, #f7c948 45%, #ff9d2e);
+      box-shadow: 0 0 24px rgba(247,201,72,.35), 0 0 64px rgba(247,201,72,.12);
+      transition: transform .2s, box-shadow .25s;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 0 34px rgba(247,201,72,.55); }
+  </style>
 </head>
 <body>
-  <main>
-    <section class="hero err-hero">
-      <div class="fx">
-        <div class="grid-fx"></div>
-        <div class="orb orb-gold"></div>
-        <div class="orb orb-violet"></div>
-      </div>
-      <div class="container" style="position:relative; z-index:2;">
-        <div class="err-code">404</div>
-        <h1 style="font-size:1.6rem; margin:18px 0 12px;">This page has wandered off the map.</h1>
-        <p style="max-width:480px; margin:0 auto 32px;">The link may be old or mistyped. Let's get you back to somewhere useful.</p>
-        <a href="/" class="btn btn-gold">Back to Home</a>
-      </div>
-    </section>
+  <div class="orb orb-gold"></div>
+  <div class="orb orb-violet"></div>
+  <main class="wrap">
+    <div class="code">404</div>
+    <h1>This page has wandered off the map.</h1>
+    <p>The link may be old or mistyped. Let's get you back to somewhere useful.</p>
+    <a href="/" class="btn" id="home-link">Back to Home</a>
   </main>
-  <script src="/assets/js/main.js"></script>
+  <script>
+    /* On a project page (user.github.io/repo/) home is /repo/, not /. */
+    if (location.hostname.endsWith(".github.io")) {
+      var seg = location.pathname.split("/")[1];
+      if (seg) document.getElementById("home-link").href = "/" + seg + "/";
+    }
+  </script>
 </body>
 </html>
