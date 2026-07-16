@@ -58,7 +58,7 @@ Also have a solicitor review `privacy.html` and `terms.html` — they are solid 
 
 ### Note on 404.html
 
-`404.html` uses root-absolute paths (`/assets/...`) so it renders from any URL depth. On a **project page** (`user.github.io/repo/`) those need the repo prefix (`/repo/assets/...`); on a **custom domain or user page** they're correct as is. All other pages use relative paths and work everywhere.
+`404.html` is fully self-contained (inline styles, home link computed at runtime), so it works unchanged on project pages (`user.github.io/repo/`), user pages and custom domains. All other pages use relative paths and work everywhere.
 
 ## Design system
 
