@@ -74,10 +74,24 @@ h1, h2, h3, h4 {
 
 .grad-text {
   background: var(--grad-hero);
+  background-size: 220% 220%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
+  animation: gradShift 7s ease-in-out infinite;
+}
+@keyframes gradShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.sparkle-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
 
 .eyebrow {
@@ -128,9 +142,25 @@ h1, h2, h3, h4 {
   white-space: nowrap;
 }
 .btn-gold {
+  position: relative;
+  overflow: hidden;
   background: var(--grad-gold);
   color: #1a1204;
   box-shadow: var(--glow-gold);
+}
+.btn-gold::after {
+  /* travelling glint */
+  content: "";
+  position: absolute;
+  top: 0; left: -60%;
+  width: 40%; height: 100%;
+  background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  transform: skewX(-20deg);
+  animation: glint 3.6s ease-in-out infinite;
+}
+@keyframes glint {
+  0%, 60% { left: -60%; }
+  100% { left: 140%; }
 }
 .btn-gold:hover {
   transform: translateY(-2px);
@@ -342,12 +372,24 @@ h1, h2, h3, h4 {
   opacity: 0;
   transition: opacity 0.3s;
 }
+.card::after {
+  /* shine sweep */
+  content: "";
+  position: absolute;
+  top: 0; left: -80%;
+  width: 50%; height: 100%;
+  background: linear-gradient(105deg, transparent, rgba(255, 226, 154, 0.09), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+  pointer-events: none;
+}
 .card:hover {
   transform: translateY(-6px);
   border-color: var(--border-gold);
   box-shadow: var(--shadow-card), 0 0 40px rgba(247, 201, 72, 0.08);
 }
 .card:hover::before { opacity: 1; }
+.card:hover::after { left: 130%; }
 .card > * { position: relative; }
 
 .card .icon {
@@ -622,6 +664,49 @@ a.tag-link:hover {
   color: var(--gold-1);
   box-shadow: 0 0 18px rgba(247, 201, 72, 0.18);
   transform: translateY(-2px);
+}
+
+/* Tech-stack marquee */
+.marquee {
+  overflow: hidden;
+  position: relative;
+  padding: 10px 0;
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+}
+.marquee-track {
+  display: flex;
+  gap: 14px;
+  width: max-content;
+  animation: marquee 36s linear infinite;
+}
+.marquee:hover .marquee-track { animation-play-state: paused; }
+.marquee .tag { white-space: nowrap; font-size: 0.9rem; padding: 9px 20px; }
+.marquee-rev .marquee-track { animation-direction: reverse; }
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; flex-wrap: wrap; width: auto; }
+}
+
+/* Gradient border band (AI section) */
+.glow-band {
+  position: relative;
+  border-radius: 26px;
+  padding: 2px;
+  background: linear-gradient(120deg, rgba(247,201,72,0.6), rgba(124,92,255,0.5), rgba(45,212,255,0.4), rgba(247,201,72,0.6));
+  background-size: 300% 300%;
+  animation: gradShift 9s ease-in-out infinite;
+}
+.glow-band-inner {
+  border-radius: 24px;
+  background: var(--bg-1);
+  padding: 56px 48px;
+}
+@media (max-width: 768px) {
+  .glow-band-inner { padding: 40px 24px; }
 }
 
 .err-hero { min-height: 70vh; display: flex; align-items: center; text-align: center; }

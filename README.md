@@ -1,63 +1,45 @@
 # MVR IT Services LTD — Marketing Website
 
-Static marketing website, built for GitHub Pages. No build step, no frameworks — pure HTML/CSS/JS.
+Static marketing website + PWA, live at **https://mvritservices.com** (GitHub Pages, `main` branch, root). No build step, no frameworks — pure HTML/CSS/JS.
 
-## Pages
+## Structure (clean URLs)
 
-| Page | File |
+| URL | File |
 |---|---|
-| Home | `index.html` |
-| Services | `services.html` |
-| Products (XLeShop, School, Hospital, Sthira, Events/QR, Telemarketing) | `products.html` |
-| About | `about.html` |
-| Contact | `contact.html` |
-| Privacy Policy (UK GDPR) | `privacy.html` |
-| Terms of Service | `terms.html` |
-| Cookie Policy | `cookies.html` |
-| Not found | `404.html` |
+| `/` | `index.html` |
+| `/services/` | `services/index.html` |
+| `/products/` | `products/index.html` |
+| `/about/` | `about/index.html` |
+| `/contact/` | `contact/index.html` |
+| `/privacy/` `/terms/` `/cookies/` | UK-GDPR legal pages |
+| `/thanks/` | contact-form success page |
+| any bad URL | `404.html` (self-contained) |
 
-Shared assets live in `assets/` (CSS design system, JS behaviour, SVG logo + favicon).
+Every page uses root-absolute links (`/services/`, `/assets/...`), which works on the custom domain. Shared assets in `assets/` (CSS design system, JS behaviour, SVG logo, PNG PWA icons).
 
-## ✅ Before going live — replace these placeholders
+## PWA
 
-Search the whole project for each token:
+- `manifest.webmanifest` — installable app manifest (icons 192/512 + maskable, generated from the logo).
+- `sw.js` — service worker: network-first for pages, cache-first for assets, offline fallback. Registered from `assets/js/main.js` (HTTPS only).
+- **When deploying changes, bump `VERSION` in `sw.js`** (e.g. `mvr-v1` → `mvr-v2`) so returning visitors' caches refresh.
 
-| Placeholder | Where | Replace with |
-|---|---|---|
-| *(none — all placeholders filled)* | | |
+## Contact form
 
-Contact form uses FormSubmit.co (free, no account) delivering to sales@mvritservices.com — the FIRST submission emails a one-time activation link to that inbox; click it once. Success redirect: thanks.html.
-
-Also have a solicitor review `privacy.html` and `terms.html` — they are solid UK-oriented starting templates, not legal advice.
-
-## Deploying to GitHub Pages
-
-1. Create a repository on GitHub (e.g. `mvr-website`).
-2. Push this folder:
-   ```
-   git init
-   git add .
-   git commit -m "MVR IT Services website"
-   git branch -M main
-   git remote add origin https://github.com/<your-user>/<repo>.git
-   git push -u origin main
-   ```
-3. In the repo: **Settings → Pages → Source: Deploy from a branch → main / (root)**.
-4. The site goes live at `https://<your-user>.github.io/<repo>/`.
-
-### When your custom domain is ready
-
-1. **Settings → Pages → Custom domain** — enter the domain; GitHub creates a `CNAME` file.
-2. At your DNS provider: a `CNAME` record from `www` to `<your-user>.github.io`, and `A`/`ALIAS` records for the apex to GitHub Pages IPs (185.199.108.153 / .109 / .110 / .111).
-3. Tick **Enforce HTTPS** once the certificate is issued.
-4. Update `sitemap.xml` and `robots.txt` with the domain.
-
-### Note on 404.html
-
-`404.html` is fully self-contained (inline styles, home link computed at runtime), so it works unchanged on project pages (`user.github.io/repo/`), user pages and custom domains. All other pages use relative paths and work everywhere.
+FormSubmit.co (free, no account) → sales@mvritservices.com (activated). Honeypot spam filter, table email template, redirect to `/thanks/`.
 
 ## Design system
 
-- Theme: dark futuristic, golden glow gradients (`assets/css/style.css` — all colours are CSS variables in `:root`)
-- Fonts: Sora (headings) + Inter (body) via Google Fonts
-- Behaviour (`assets/js/main.js`): mobile nav, sticky header, scroll-reveal, animated counters, cookie-consent banner (localStorage, analytics-ready)
+- Theme: dark futuristic, golden glow gradients — all colours are CSS variables in `assets/css/style.css` `:root`.
+- Fonts: Sora (headings) + Inter (body) via Google Fonts.
+- Effects: sparkle canvas in heroes, animated gradient text, card shine sweep, button glint, tech-stack marquee, scroll reveal, animated counters. All respect `prefers-reduced-motion`.
+- Behaviour (`assets/js/main.js`): mobile nav, sticky header, cookie-consent banner (localStorage, analytics-ready), service-worker registration.
+
+## Company facts on site
+
+Company No. 10251131 (England & Wales) · Registered office: Reading, United Kingdom · sales@mvritservices.com · 07446 228152.
+
+## Deploying
+
+Push to `main` — GitHub Pages publishes automatically. Domain: CNAME file (`mvritservices.com`) + GoDaddy DNS A records to GitHub Pages IPs + `www` CNAME to `vmanthani.github.io`; HTTPS enforced.
+
+Legal pages are solid UK-oriented templates — have a solicitor review before relying on them.
