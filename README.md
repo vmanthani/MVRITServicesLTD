@@ -1,0 +1,67 @@
+# MVR IT Services LTD — Marketing Website
+
+Static marketing website, built for GitHub Pages. No build step, no frameworks — pure HTML/CSS/JS.
+
+## Pages
+
+| Page | File |
+|---|---|
+| Home | `index.html` |
+| Services | `services.html` |
+| Products (XLeShop, School, Hospital, Sthira, Events/QR, Telemarketing) | `products.html` |
+| About | `about.html` |
+| Contact | `contact.html` |
+| Privacy Policy (UK GDPR) | `privacy.html` |
+| Terms of Service | `terms.html` |
+| Cookie Policy | `cookies.html` |
+| Not found | `404.html` |
+
+Shared assets live in `assets/` (CSS design system, JS behaviour, SVG logo + favicon).
+
+## ✅ Before going live — replace these placeholders
+
+Search the whole project for each token:
+
+| Placeholder | Where | Replace with |
+|---|---|---|
+| `[COMPANY-NUMBER]` | every footer + legal pages | Companies House registration number (legally required on the site for a UK LTD) |
+| `[REGISTERED-OFFICE-ADDRESS]` | every footer + legal pages + contact page | Registered office address (also legally required) |
+| `[CONTACT-EMAIL]` | contact + legal pages | Public contact email |
+| `[PHONE-NUMBER]` | contact page | Public phone/WhatsApp number |
+| `YOUR_FORM_ID` | `contact.html` form action | Formspree form ID (free at formspree.io) — needed because GitHub Pages has no backend |
+| `YOUR-DOMAIN.com` | `sitemap.xml`, `robots.txt` | Final domain |
+| `info@example.com` | JSON-LD in `index.html` | Public contact email |
+
+Also have a solicitor review `privacy.html` and `terms.html` — they are solid UK-oriented starting templates, not legal advice.
+
+## Deploying to GitHub Pages
+
+1. Create a repository on GitHub (e.g. `mvr-website`).
+2. Push this folder:
+   ```
+   git init
+   git add .
+   git commit -m "MVR IT Services website"
+   git branch -M main
+   git remote add origin https://github.com/<your-user>/<repo>.git
+   git push -u origin main
+   ```
+3. In the repo: **Settings → Pages → Source: Deploy from a branch → main / (root)**.
+4. The site goes live at `https://<your-user>.github.io/<repo>/`.
+
+### When your custom domain is ready
+
+1. **Settings → Pages → Custom domain** — enter the domain; GitHub creates a `CNAME` file.
+2. At your DNS provider: a `CNAME` record from `www` to `<your-user>.github.io`, and `A`/`ALIAS` records for the apex to GitHub Pages IPs (185.199.108.153 / .109 / .110 / .111).
+3. Tick **Enforce HTTPS** once the certificate is issued.
+4. Update `sitemap.xml` and `robots.txt` with the domain.
+
+### Note on 404.html
+
+`404.html` uses root-absolute paths (`/assets/...`) so it renders from any URL depth. On a **project page** (`user.github.io/repo/`) those need the repo prefix (`/repo/assets/...`); on a **custom domain or user page** they're correct as is. All other pages use relative paths and work everywhere.
+
+## Design system
+
+- Theme: dark futuristic, golden glow gradients (`assets/css/style.css` — all colours are CSS variables in `:root`)
+- Fonts: Sora (headings) + Inter (body) via Google Fonts
+- Behaviour (`assets/js/main.js`): mobile nav, sticky header, scroll-reveal, animated counters, cookie-consent banner (localStorage, analytics-ready)
