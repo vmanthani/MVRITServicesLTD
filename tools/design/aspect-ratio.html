@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Aspect Ratio Calculator — Free Online | MVR Tools</title>
+<meta name="description" content="Calculate proportional dimensions and simplify aspect ratios for images and video.">
+<link rel="canonical" href="https://tools.mvrservices.com/design/aspect-ratio.html">
+<meta name="theme-color" content="#0f172a">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Aspect Ratio Calculator — Free Online | MVR Tools">
+<meta property="og:description" content="Calculate proportional dimensions and simplify aspect ratios for images and video.">
+<meta property="og:url" content="https://tools.mvrservices.com/design/aspect-ratio.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="stylesheet" href="../assets/app.css">
+<script src="../engine/render.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","name":"Aspect Ratio Calculator","description":"Calculate proportional dimensions and simplify aspect ratios for images and video.","url":"https://tools.mvrservices.com/design/aspect-ratio.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://tools.mvrservices.com"},{"@type":"ListItem","position":2,"name":"Design & Media","item":"https://tools.mvrservices.com/design/index.html"},{"@type":"ListItem","position":3,"name":"Aspect Ratio Calculator","item":"https://tools.mvrservices.com/design/aspect-ratio.html"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why does my video need even dimensions?","acceptedAnswer":{"@type":"Answer","text":"Most codecs (H.264, H.265) subsample chroma in 2×2 blocks, so both width and height must be divisible by 2 — some encoders require multiples of 4 or 16."}}]}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <a class="brand" href="../index.html"><span class="brand-mark">▚</span> MVR Tools</a>
+  <form class="search-wrap" role="search" onsubmit="return false">
+    <input id="q" type="search" placeholder="Search tools…" autocomplete="off" aria-label="Search tools">
+  </form>
+  <button id="theme" class="icon-btn" aria-label="Toggle theme">◐</button>
+</header>
+<div id="results" class="search-results" hidden></div>
+<main id="main">
+
+<nav class="crumbs"><a href="../index.html">Home</a> › <a href="index.html">Design &amp; Media</a> › <span>Aspect Ratio Calculator</span></nav>
+<article class="tool" data-tool="aspect-ratio">
+  <h1>🖼️ Aspect Ratio Calculator</h1>
+  <p class="lede">Calculate proportional dimensions and simplify aspect ratios for images and video.</p>
+  <div class="calc">
+    <form class="tool-form" autocomplete="off" onsubmit="return false"></form>
+    <div class="tool-results" aria-live="polite"></div>
+  </div>
+  <section class="panel"><h2>Formula</h2><pre class="formula">newHeight = newWidth × (originalHeight / originalWidth)</pre></section><section class="panel"><h2>Tips</h2><ul class="tips"><li>Common ratios: 16:9 widescreen video, 4:3 legacy displays, 1:1 square social posts, 9:16 vertical/stories, 3:2 most DSLR sensors.</li><li>Scaling to a non-integer height causes half-pixel rendering. Round to an even number for video encoding.</li></ul></section><section class="panel"><h2>Frequently asked questions</h2><details><summary>Why does my video need even dimensions?</summary><p>Most codecs (H.264, H.265) subsample chroma in 2×2 blocks, so both width and height must be divisible by 2 — some encoders require multiples of 4 or 16.</p></details></section>
+  
+</article>
+<script src="../engine/tools.bundle.js" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  MVRTool.mount(window.TOOLS['aspect-ratio'], document.querySelector('.tool'));
+});
+</script>
+</main>
+<footer class="site-footer">
+  <p>MVR Tools — every calculation runs in your browser. Nothing is sent to a server.</p>
+  <p class="muted">Results are provided for general information. For financial, medical, legal, or safety-critical decisions, consult a qualified professional.</p>
+</footer>
+<script>window.__BASE__="../";</script>
+<script src="../assets/search-index.js" defer></script>
+<script src="../assets/app.js" defer></script>
+</body>
+</html>

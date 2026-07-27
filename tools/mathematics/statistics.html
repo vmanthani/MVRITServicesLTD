@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Statistics Calculator (Mean, Median, Mode, SD) | MVR Tools</title>
+<meta name="description" content="Compute mean, median, mode, standard deviation, variance, and quartiles from a dataset.">
+<link rel="canonical" href="https://tools.mvrservices.com/mathematics/statistics.html">
+<meta name="theme-color" content="#0f172a">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Statistics Calculator (Mean, Median, Mode, SD) | MVR Tools">
+<meta property="og:description" content="Compute mean, median, mode, standard deviation, variance, and quartiles from a dataset.">
+<meta property="og:url" content="https://tools.mvrservices.com/mathematics/statistics.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="stylesheet" href="../assets/app.css">
+<script src="../engine/render.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","name":"Statistics Calculator (Mean, Median, Mode, SD)","description":"Compute mean, median, mode, standard deviation, variance, and quartiles from a dataset.","url":"https://tools.mvrservices.com/mathematics/statistics.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://tools.mvrservices.com"},{"@type":"ListItem","position":2,"name":"Mathematics","item":"https://tools.mvrservices.com/mathematics/index.html"},{"@type":"ListItem","position":3,"name":"Statistics Calculator (Mean, Median, Mode, SD)","item":"https://tools.mvrservices.com/mathematics/statistics.html"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why are there two standard deviations?","acceptedAnswer":{"@type":"Answer","text":"Dividing by N gives the population standard deviation, correct when your data is the entire population. Dividing by N−1 (Bessel’s correction) gives an unbiased estimate when your data is a sample."}}]}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <a class="brand" href="../index.html"><span class="brand-mark">▚</span> MVR Tools</a>
+  <form class="search-wrap" role="search" onsubmit="return false">
+    <input id="q" type="search" placeholder="Search tools…" autocomplete="off" aria-label="Search tools">
+  </form>
+  <button id="theme" class="icon-btn" aria-label="Toggle theme">◐</button>
+</header>
+<div id="results" class="search-results" hidden></div>
+<main id="main">
+
+<nav class="crumbs"><a href="../index.html">Home</a> › <a href="index.html">Mathematics</a> › <span>Statistics Calculator (Mean, Median, Mode, SD)</span></nav>
+<article class="tool" data-tool="statistics">
+  <h1>📊 Statistics Calculator (Mean, Median, Mode, SD)</h1>
+  <p class="lede">Compute mean, median, mode, standard deviation, variance, and quartiles from a dataset.</p>
+  <div class="calc">
+    <form class="tool-form" autocomplete="off" onsubmit="return false"></form>
+    <div class="tool-results" aria-live="polite"></div>
+  </div>
+  <section class="panel"><h2>Formula</h2><pre class="formula">σ = √( Σ(xᵢ − μ)² / N )   ·   s = √( Σ(xᵢ − x̄)² / (N−1) )</pre></section><section class="panel"><h2>Tips</h2><ul class="tips"><li>Use the sample standard deviation (n−1) when your data is a sample drawn from a larger population — this is the usual case.</li><li>The median resists outliers; the mean does not. A large gap between them signals a skewed distribution.</li><li>The IQR is a robust spread measure. Points beyond Q1 − 1.5·IQR or Q3 + 1.5·IQR are conventional outliers.</li></ul></section><section class="panel"><h2>Frequently asked questions</h2><details><summary>Why are there two standard deviations?</summary><p>Dividing by N gives the population standard deviation, correct when your data is the entire population. Dividing by N−1 (Bessel’s correction) gives an unbiased estimate when your data is a sample.</p></details></section>
+  <section class="panel"><h2>Related tools</h2><ul class="related"><li><a href="../mathematics/percentage.html">Percentage Calculator</a></li><li><a href="../mathematics/quadratic-solver.html">Quadratic Equation Solver</a></li></ul></section>
+</article>
+<script src="../engine/tools.bundle.js" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  MVRTool.mount(window.TOOLS['statistics'], document.querySelector('.tool'));
+});
+</script>
+</main>
+<footer class="site-footer">
+  <p>MVR Tools — every calculation runs in your browser. Nothing is sent to a server.</p>
+  <p class="muted">Results are provided for general information. For financial, medical, legal, or safety-critical decisions, consult a qualified professional.</p>
+</footer>
+<script>window.__BASE__="../";</script>
+<script src="../assets/search-index.js" defer></script>
+<script src="../assets/app.js" defer></script>
+</body>
+</html>
