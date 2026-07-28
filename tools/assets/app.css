@@ -786,3 +786,74 @@ body.nav-locked { overflow: hidden; }
   .grid-tight { grid-template-columns: 1fr; }
   .grid-tight .card-desc { display: none; }
 }
+
+/* ============================================================
+   Schedule tables — amortisation, depreciation, DCF, commission
+   ============================================================ */
+
+.tool-table[hidden] { display: none; }
+.tool-table { margin-bottom: 24px; }
+
+.table-scroll {
+  overflow-x: auto; -webkit-overflow-scrolling: touch;
+  background: var(--bg-1); border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+table.schedule {
+  width: 100%; border-collapse: collapse;
+  font-size: .85rem; font-variant-numeric: tabular-nums;
+}
+table.schedule th {
+  position: sticky; top: 0; z-index: 1;
+  padding: 12px 14px; text-align: left; white-space: nowrap;
+  background: var(--bg-2); color: var(--text-3);
+  font-family: var(--font-head); font-size: .68rem; font-weight: 700;
+  letter-spacing: .14em; text-transform: uppercase;
+  border-bottom: 1px solid var(--border);
+}
+table.schedule td {
+  padding: 10px 14px; white-space: nowrap;
+  color: var(--text-2); border-bottom: 1px solid var(--border);
+}
+table.schedule tbody tr:last-child td { border-bottom: 0; }
+table.schedule tbody tr:hover td { background: var(--surface); color: var(--text-1); }
+table.schedule .num { text-align: right; font-family: var(--font-mono); }
+table.schedule td.num { color: var(--text-1); }
+table.schedule tbody tr:nth-child(even) td { background: rgba(127, 127, 127, .04); }
+table.schedule tbody tr:nth-child(even):hover td { background: var(--surface); }
+
+.table-actions { margin-top: 12px; justify-content: flex-end; }
+
+/* ============================================================
+   Currency converter
+   ============================================================ */
+
+.fx-table { margin-top: 20px; }
+.fx-table:empty { display: none; }
+.fx-table h3 {
+  font-size: .7rem; font-weight: 700; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--text-3); margin: 0 0 12px;
+}
+.fx-grid {
+  display: grid; gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+.fx-cell {
+  display: flex; flex-direction: column; gap: 3px; padding: 12px 14px;
+  background: var(--bg-1); border: 1px solid var(--border); border-radius: var(--radius-sm);
+}
+.fx-code {
+  font-family: var(--font-head); font-size: .68rem; font-weight: 700;
+  letter-spacing: .14em; color: var(--accent);
+}
+.fx-val {
+  font-family: var(--font-mono); font-size: .92rem; font-weight: 600;
+  color: var(--text-1); font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 640px) {
+  table.schedule { font-size: .78rem; }
+  table.schedule th, table.schedule td { padding: 9px 10px; }
+  .fx-grid { grid-template-columns: 1fr 1fr; }
+}

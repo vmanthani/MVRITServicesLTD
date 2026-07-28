@@ -1,27 +1,27 @@
 {
   "name": "MVR IT Services — Tools",
   "short_name": "MVR Tools",
-  "description": "1,034 free calculators and converters from MVR IT Services. Works offline.",
-  "start_url": "/",
-  "scope": "/",
+  "description": "1,063 free calculators and converters from MVR IT Services. Works offline.",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
   "theme_color": "#06080f",
   "background_color": "#06080f",
   "icons": [
     {
-      "src": "/assets/icon-192.png",
+      "src": "./assets/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/assets/icon-512.png",
+      "src": "./assets/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/assets/icon-maskable.png",
+      "src": "./assets/icon-maskable.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"

@@ -332,4 +332,225 @@
   <rect x="3.4" y="13.4" width="7.2" height="7.2" rx="1.2"/>
   <rect x="13.4" y="13.4" width="7.2" height="7.2" rx="1.2"/>
 </symbol>
+
+<!-- ============ BUSINESS & ACCOUNTING ============ -->
+
+<symbol id="i-business" viewBox="0 0 24 24">
+  <rect x="2.6" y="7.4" width="18.8" height="13.2" rx="2"/>
+  <path d="M8.6 7.4V5.2a1.8 1.8 0 0 1 1.8-1.8h3.2a1.8 1.8 0 0 1 1.8 1.8v2.2"/>
+  <path d="M2.6 12.6h18.8" class="thin"/>
+  <path d="M10.4 12.6h3.2v2.2h-3.2z" class="fill"/>
+</symbol>
+
+<symbol id="i-currency-converter" viewBox="0 0 24 24">
+  <circle cx="7.6" cy="7.6" r="4.6"/>
+  <circle cx="16.4" cy="16.4" r="4.6"/>
+  <path d="M6.2 8.6h2.8M6.2 6.6h2.8M7.6 5.2v4.8" class="thin"/>
+  <path d="M14.6 14.6h3.6M14.8 17.4h3.4M16.4 13.4v6" class="thin"/>
+</symbol>
+
+<symbol id="i-profit-margin" viewBox="0 0 24 24">
+  <path d="M3.4 20.6h17.2"/>
+  <path d="M4.6 16.6 9.4 11l3.6 3.4 6.4-7.6"/>
+  <path d="M16.6 6.4h3.4v3.4" class="thin"/>
+  <circle cx="9.4" cy="11" r="1.2" class="fill"/>
+  <circle cx="13" cy="14.4" r="1.2" class="fill"/>
+</symbol>
+
+<symbol id="i-break-even" viewBox="0 0 24 24">
+  <path d="M3.4 20.6h17.2M3.4 20.6V3.4" class="thin"/>
+  <path d="M4.6 17.4 20 6.6M4.6 6.6 20 17.4"/>
+  <circle cx="12.3" cy="12" r="1.8"/>
+</symbol>
+
+<symbol id="i-roi" viewBox="0 0 24 24">
+  <circle cx="12" cy="12" r="8.8"/>
+  <path d="M12 6.6v10.8M14.8 8.8H10.6a1.9 1.9 0 0 0 0 3.8h2.8a1.9 1.9 0 0 1 0 3.8H9.2" class="thin"/>
+  <path d="M18.4 4.6h2.6v2.6" class="thin"/>
+</symbol>
+
+<symbol id="i-npv-irr" viewBox="0 0 24 24">
+  <path d="M3.4 20.6h17.2"/>
+  <rect x="4.8" y="13.6" width="2.8" height="4.4"/>
+  <rect x="9.2" y="10.4" width="2.8" height="7.6"/>
+  <rect x="13.6" y="7.6" width="2.8" height="10.4"/>
+  <rect x="18" y="5" width="2.8" height="13"/>
+  <path d="M3.4 4.6 6.2 7.4" class="thin"/>
+</symbol>
+
+<symbol id="i-cagr" viewBox="0 0 24 24">
+  <path d="M3.4 20.6h17.2"/>
+  <path d="M4.6 18C4.6 10 9 4.6 20 4"/>
+  <circle cx="4.6" cy="18" r="1.3" class="fill"/>
+  <circle cx="11.6" cy="10.6" r="1.3" class="fill"/>
+  <circle cx="19.4" cy="4.6" r="1.3" class="fill"/>
+</symbol>
+
+<symbol id="i-depreciation" viewBox="0 0 24 24">
+  <path d="M3.4 20.6h17.2"/>
+  <path d="M4.6 5.4 20 17.4"/>
+  <path d="M20 13.6v3.8h-3.8" class="thin"/>
+  <rect x="4" y="4.4" width="4" height="4" rx=".8" class="thin"/>
+</symbol>
+
+<symbol id="i-amortization-schedule" viewBox="0 0 24 24">
+  <rect x="3.4" y="3.4" width="17.2" height="17.2" rx="2"/>
+  <path d="M3.4 8.4h17.2M9 8.4v12.2M3.4 14.4h17.2" class="thin"/>
+  <path d="M11.6 11.4h6.4M11.6 17.4h6.4M5.6 11.4h1.2M5.6 17.4h1.2" class="thin"/>
+</symbol>
+
+<symbol id="i-business-ratios" viewBox="0 0 24 24">
+  <circle cx="12" cy="12" r="8.8"/>
+  <path d="M12 3.2v8.8l7.6 4.4"/>
+  <path d="M12 12 4.4 16.4" class="thin"/>
+</symbol>
+
+<symbol id="i-uk-take-home-pay" viewBox="0 0 24 24">
+  <rect x="2.6" y="5.4" width="18.8" height="13.2" rx="2"/>
+  <path d="M2.6 9.4h18.8" class="thin"/>
+  <path d="M6.4 13.4h4M6.4 15.8h6.4" class="thin"/>
+  <circle cx="17.4" cy="14.6" r="2.4"/>
+</symbol>
+
+<symbol id="i-employer-cost" viewBox="0 0 24 24">
+  <circle cx="8.6" cy="7.6" r="3.2"/>
+  <path d="M2.8 20.4a5.8 5.8 0 0 1 11.6 0"/>
+  <circle cx="17.6" cy="9.6" r="3.6"/>
+  <path d="M16 9.6h3.2M16 8.2h3.2M17.6 7v5.2" class="thin"/>
+</symbol>
+
+<symbol id="i-discount-calculator" viewBox="0 0 24 24">
+  <path d="M12.6 3.4H20v7.4l-8.8 8.8a2 2 0 0 1-2.8 0l-4.6-4.6a2 2 0 0 1 0-2.8z"/>
+  <circle cx="16.2" cy="7.8" r="1.3" class="fill"/>
+  <path d="M8 14.6 12 10.6" class="thin"/>
+  <circle cx="8.4" cy="11" r="1.1" class="thin"/>
+  <circle cx="11.6" cy="14.2" r="1.1" class="thin"/>
+</symbol>
+
+<symbol id="i-commission-calculator" viewBox="0 0 24 24">
+  <path d="M3.4 20.6h17.2"/>
+  <path d="M5 18v-3.4M9.4 18v-6.4M13.8 18v-9.4M18.2 18V5.4"/>
+  <circle cx="18.2" cy="3.6" r="1.4" class="fill"/>
+</symbol>
+
+<symbol id="i-invoice-payment-terms" viewBox="0 0 24 24">
+  <path d="M4.6 2.8v18.4l2.2-1.6 2.2 1.6 2.2-1.6 2.2 1.6V2.8z"/>
+  <path d="M7.6 7.4h5.6M7.6 11h5.6M7.6 14.6h3.4" class="thin"/>
+  <circle cx="17.4" cy="14.6" r="4.2"/>
+  <path d="M17.4 12.4v2.4l1.6 1" class="thin"/>
+</symbol>
+
+<!-- ============ INDIA ============ -->
+
+<symbol id="i-india" viewBox="0 0 24 24">
+  <path d="M12 2.6 3.6 6v6.6c0 4.6 3.4 8 8.4 9.2 5-1.2 8.4-4.6 8.4-9.2V6z"/>
+  <circle cx="12" cy="11.4" r="3"/>
+  <path d="M12 8.4v6M9 11.4h6M9.9 9.3l4.2 4.2M14.1 9.3l-4.2 4.2" class="thin"/>
+</symbol>
+
+<symbol id="i-gst-calculator" viewBox="0 0 24 24">
+  <rect x="4" y="2.8" width="16" height="18.4" rx="2"/>
+  <path d="M7.4 6.4h9.2v3.6H7.4z"/>
+  <path d="M8.6 13.4h1.4M13.9 13.4h1.4M8.6 17h1.4M13.9 17h1.4" class="thin"/>
+  <circle cx="12" cy="13.4" r=".9" class="fill"/>
+  <circle cx="12" cy="17" r=".9" class="fill"/>
+</symbol>
+
+<symbol id="i-india-income-tax" viewBox="0 0 24 24">
+  <path d="M5.4 2.8v18.4h13.2V7.6L13.8 2.8z"/>
+  <path d="M13.8 2.8v4.8h4.8" class="thin"/>
+  <path d="M8.6 12.6h6.8M8.6 16.2h4.4" class="thin"/>
+  <path d="M8.6 8.8h2.6" class="thin"/>
+</symbol>
+
+<symbol id="i-hra-exemption" viewBox="0 0 24 24">
+  <path d="M3.4 10.6 12 3.8l8.6 6.8v9a1.4 1.4 0 0 1-1.4 1.4H4.8a1.4 1.4 0 0 1-1.4-1.4z"/>
+  <path d="M9.6 14.4h4.8M12 12v4.8" class="thin"/>
+</symbol>
+
+<symbol id="i-india-capital-gains" viewBox="0 0 24 24">
+  <path d="M3.4 20.6h17.2"/>
+  <path d="M4.6 16.4 9.8 10l3.4 3.2L20 5.6"/>
+  <path d="M16.6 5.4H20v3.4" class="thin"/>
+  <circle cx="9.8" cy="10" r="1.2" class="fill"/>
+</symbol>
+
+<symbol id="i-tds-calculator" viewBox="0 0 24 24">
+  <rect x="3.4" y="5.4" width="17.2" height="13.2" rx="2"/>
+  <path d="M3.4 9.4h17.2" class="thin"/>
+  <path d="M7 13.4h4.4M7 16h2.6" class="thin"/>
+  <path d="M16.6 12.4v5.2M14.6 15.6l2 2 2-2"/>
+</symbol>
+
+<symbol id="i-sip-calculator" viewBox="0 0 24 24">
+  <path d="M3.4 20.6h17.2"/>
+  <rect x="4.8" y="15" width="2.6" height="3"/>
+  <rect x="9" y="12" width="2.6" height="6"/>
+  <rect x="13.2" y="8.6" width="2.6" height="9.4"/>
+  <rect x="17.4" y="4.6" width="2.6" height="13.4"/>
+  <path d="M4.6 3.6h3.2M6.2 2v3.2" class="thin"/>
+</symbol>
+
+<symbol id="i-lumpsum-returns" viewBox="0 0 24 24">
+  <ellipse cx="12" cy="6.4" rx="7.4" ry="2.8"/>
+  <path d="M4.6 6.4v5.2c0 1.6 3.3 2.8 7.4 2.8s7.4-1.2 7.4-2.8V6.4"/>
+  <path d="M4.6 11.6v5.2c0 1.6 3.3 2.8 7.4 2.8s7.4-1.2 7.4-2.8v-5.2" class="thin"/>
+</symbol>
+
+<symbol id="i-ppf-calculator" viewBox="0 0 24 24">
+  <rect x="3" y="7" width="18" height="13.4" rx="2"/>
+  <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+  <circle cx="12" cy="13.6" r="2.6"/>
+  <path d="M12 11.4v4.4M10.6 12.8h2.8" class="thin"/>
+</symbol>
+
+<symbol id="i-epf-calculator" viewBox="0 0 24 24">
+  <circle cx="12" cy="7" r="3.4"/>
+  <path d="M4.6 20.6a7.4 7.4 0 0 1 14.8 0"/>
+  <path d="M17.4 3.4h3.4v3.4" class="thin"/>
+  <path d="M20.8 3.4 16.6 7.6" class="thin"/>
+</symbol>
+
+<symbol id="i-gratuity-calculator" viewBox="0 0 24 24">
+  <rect x="3.4" y="8.6" width="17.2" height="12" rx="1.8"/>
+  <path d="M3.4 13h17.2M12 8.6v12" class="thin"/>
+  <path d="M12 8.6C10.6 5 8.6 3.4 7 3.4a2.6 2.6 0 0 0 0 5.2zM12 8.6c1.4-3.6 3.4-5.2 5-5.2a2.6 2.6 0 0 1 0 5.2z"/>
+</symbol>
+
+<symbol id="i-fd-rd-calculator" viewBox="0 0 24 24">
+  <path d="M3.4 9.4 12 4l8.6 5.4M4.8 9.8v8.4M19.2 9.8v8.4M3.4 20.6h17.2"/>
+  <path d="M12 11.4v5.2M10.4 12.8h3.2M10.4 15.2h3.2" class="thin"/>
+</symbol>
+
+<symbol id="i-nps-calculator" viewBox="0 0 24 24">
+  <circle cx="12" cy="6.4" r="3"/>
+  <path d="M6.6 20.6a5.4 5.4 0 0 1 10.8 0"/>
+  <path d="M3.4 14.6a8.8 8.8 0 0 1 17.2 0" class="thin"/>
+  <circle cx="12" cy="14.6" r="1.2" class="fill"/>
+</symbol>
+
+<symbol id="i-ctc-take-home" viewBox="0 0 24 24">
+  <rect x="2.6" y="5" width="18.8" height="14" rx="2"/>
+  <path d="M2.6 9.4h18.8" class="thin"/>
+  <path d="M6.4 13h4.6M6.4 16h2.8" class="thin"/>
+  <path d="M14.6 15.4h4.4M17.8 13.4l2 2-2 2"/>
+</symbol>
+
+<symbol id="i-emi-calculator" viewBox="0 0 24 24">
+  <rect x="4.4" y="2.8" width="15.2" height="18.4" rx="2"/>
+  <rect x="7.4" y="5.8" width="9.2" height="3.6" rx=".6"/>
+  <circle cx="8.8" cy="13" r="1" class="fill"/>
+  <circle cx="12" cy="13" r="1" class="fill"/>
+  <circle cx="15.2" cy="13" r="1" class="fill"/>
+  <circle cx="8.8" cy="17" r="1" class="fill"/>
+  <circle cx="12" cy="17" r="1" class="fill"/>
+  <circle cx="15.2" cy="17" r="1" class="fill"/>
+</symbol>
+
+<symbol id="i-advance-tax" viewBox="0 0 24 24">
+  <rect x="3.4" y="5" width="17.2" height="16" rx="2"/>
+  <path d="M3.4 9.8h17.2M8.4 2.8v4M15.6 2.8v4"/>
+  <path d="M8 14.6h2.4M13.6 14.6H16" class="thin"/>
+  <path d="M9.4 17.6l1.6 1.6 3.6-3.6"/>
+</symbol>
 </svg>

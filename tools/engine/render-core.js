@@ -9,7 +9,7 @@
   'use strict';
 
   const fmt = {
-    number(v, unit) {
+    number(v, unit, code) {
       if (v === null || v === undefined || v === '') return '—';
       if (typeof v === 'string') return v;
       if (!isFinite(v)) return v > 0 ? '∞' : (isNaN(v) ? '—' : '−∞');
@@ -18,17 +18,32 @@
       if (abs !== 0 && (abs < 1e-4 || abs >= 1e12)) s = v.toExponential(6);
       else {
         const dp = abs >= 1000 ? 2 : abs >= 1 ? 4 : 6;
-        s = Number(v.toFixed(dp)).toLocaleString('en-US', { maximumFractionDigits: dp });
+        const nloc = code === 'INR' ? 'en-IN' : code === 'USD' ? 'en-US' : 'en-GB';
+        s = Number(v.toFixed(dp)).toLocaleString(nloc, { maximumFractionDigits: dp });
       }
       return unit ? `${s} ${unit}` : s;
     },
-    currency(v) {
+    /* Currency is per-spec, not global: these tools are used from the UK
+       but the maths is identical everywhere, so the symbol is data. */
+    currency(v, unit, code) {
       if (!isFinite(v)) return '—';
-      return v.toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 2 });
+      const cur = code || window.__CURRENCY__ || 'GBP';
+      /* Locale drives digit grouping, not just the symbol. INR groups in
+         lakhs and crores (3,19,800), which is what Indian users read. */
+      const loc = cur === 'USD' ? 'en-US' : cur === 'EUR' ? 'de-DE'
+                : cur === 'INR' ? 'en-IN' : 'en-GB';
+      try {
+        return v.toLocaleString(loc, { style: 'currency', currency: cur, maximumFractionDigits: 2 });
+      } catch (e) {
+        return cur + ' ' + v.toLocaleString(loc, { maximumFractionDigits: 2 });
+      }
     },
-    percent(v) { return isFinite(v) ? `${Number(v.toFixed(4)).toLocaleString('en-US')}%` : '—'; },
+    percent(v, unit, code) {
+      const loc = code === 'INR' ? 'en-IN' : code === 'USD' ? 'en-US' : 'en-GB';
+      return isFinite(v) ? `${Number(v.toFixed(4)).toLocaleString(loc)}%` : '—';
+    },
     text(v) { return v === null || v === undefined ? '' : String(v); },
-    auto(v, unit) { return typeof v === 'string' ? v : fmt.number(v, unit); }
+    auto(v, unit, code) { return typeof v === 'string' ? v : fmt.number(v, unit, code); }
   };
 
   function buildInput(input) {
@@ -104,7 +119,7 @@
       const val = document.createElement('span');
       val.className = 'result-value';
       const f = fmt[out.format] || fmt.number;
-      val.textContent = f(v, out.unit);
+      val.textContent = f(v, out.unit, spec.currency);
       row.appendChild(val);
 
       const copy = document.createElement('button');
@@ -133,7 +148,10 @@
 
       const run = () => {
         try {
-          renderResults(spec, spec.compute(readValues(spec, form)) || {}, out);
+          const res = spec.compute(readValues(spec, form)) || {};
+          renderResults(spec, res, out);
+          const host = root.querySelector('.tool-table');
+          if (host) window.MVRTool.renderTable(res._table, host);
         } catch (e) {
           out.innerHTML = '<div class="result"><span class="result-label">Error</span>' +
                           '<span class="result-value">Check your inputs</span></div>';
@@ -224,5 +242,71 @@
       form.addEventListener('change', run);
       run();
     }
+  };
+})();
+
+/* ============================================================
+   Schedule tables — amortisation, depreciation, DCF, commission
+   ============================================================ */
+(function () {
+  'use strict';
+  window.MVRTool = window.MVRTool || {};
+
+  window.MVRTool.renderTable = function (table, host) {
+    host.innerHTML = '';
+    if (!table || !table.rows || !table.rows.length) { host.hidden = true; return; }
+    host.hidden = false;
+
+    var wrap = document.createElement('div');
+    wrap.className = 'table-scroll';
+
+    var t = document.createElement('table');
+    t.className = 'schedule';
+
+    var thead = document.createElement('thead');
+    var hr = document.createElement('tr');
+    table.head.forEach(function (h, i) {
+      var th = document.createElement('th');
+      th.textContent = h;
+      if (i > 0) th.className = 'num';
+      hr.appendChild(th);
+    });
+    thead.appendChild(hr);
+    t.appendChild(thead);
+
+    var tb = document.createElement('tbody');
+    table.rows.forEach(function (row) {
+      var tr = document.createElement('tr');
+      row.forEach(function (cell, i) {
+        var td = document.createElement('td');
+        td.textContent = cell;
+        if (i > 0) td.className = 'num';
+        tr.appendChild(td);
+      });
+      tb.appendChild(tr);
+    });
+    t.appendChild(tb);
+    wrap.appendChild(t);
+    host.appendChild(wrap);
+
+    // CSV export — schedules are the thing people paste into a spreadsheet
+    var bar = document.createElement('div');
+    bar.className = 'io-actions table-actions';
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'btn-ghost';
+    btn.textContent = 'Download CSV';
+    btn.addEventListener('click', function () {
+      var q = function (v) { return /[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; };
+      var csv = [table.head.map(q).join(',')]
+        .concat(table.rows.map(function (r) { return r.map(q).join(','); })).join('\n');
+      var url = URL.createObjectURL(new Blob([csv], { type: 'text/csv' }));
+      var a = document.createElement('a');
+      a.href = url; a.download = 'schedule.csv';
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function () { URL.revokeObjectURL(url); }, 2000);
+    });
+    bar.appendChild(btn);
+    host.appendChild(bar);
   };
 })();
