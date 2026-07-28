@@ -107,6 +107,24 @@ function surchargeRate(income, table) {
 }
 
 
+function countWeekdays(a, b) {
+  const MS = 86400000;
+  const start = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
+  const end = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
+  const days = Math.max(0, Math.round((end - start) / MS));
+
+  const whole = Math.floor(days / 7);
+  let count = whole * 5;
+
+  let dow = new Date(start).getUTCDay();
+  for (let i = 0; i < days % 7; i++) {
+    if (dow !== 0 && dow !== 6) count++;
+    dow = (dow + 1) % 7;
+  }
+  return count;
+}
+
+
 window.TOOLS = window.TOOLS || {};
 window.TOOLS["fd-rd-calculator"] = {
 "currency": "INR",
@@ -115,7 +133,7 @@ window.TOOLS["fd-rd-calculator"] = {
 "description": "Fixed and recurring deposit maturity with quarterly compounding, plus the effect of TDS.",
 "keywords": ["FD calculator","fixed deposit calculator","RD calculator","recurring deposit","FD interest","FD maturity"],
 "formula": "FD: A = P(1 + r/4)^(4t)   ·   RD compounds each instalment quarterly",
-"inputs": [{"key":"type","label":"Deposit type","type":"select","options":[{"value":"fd","label":"Fixed deposit (lump sum)"},{"value":"rd","label":"Recurring deposit (monthly)"}],"default":"fd"},{"key":"amount","label":"Deposit amount","type":"number","unit":"₹","default":500000,"min":0},{"key":"rate","label":"Interest rate","type":"number","unit":"%","default":7,"step":0.05},{"key":"years","label":"Tenure","type":"number","unit":"years","default":5,"min":0,"step":0.25},{"key":"slabRate","label":"Your income tax slab rate","type":"number","unit":"%","default":30,"min":0}],
+"inputs": [{"key":"type","label":"Deposit type","type":"select","options":[{"value":"fd","label":"Fixed deposit (lump sum)"},{"value":"rd","label":"Recurring deposit (monthly)"}],"default":"fd"},{"key":"amount","label":"Deposit amount","type":"number","unit":"₹","default":500000,"min":0},{"key":"rate","label":"Interest rate","type":"number","unit":"%","default":7,"step":0.05},{"key":"years","label":"Tenure","type":"number","unit":"years","default":5,"min":0,"max":50,"step":0.25},{"key":"slabRate","label":"Your income tax slab rate","type":"number","unit":"%","default":30,"min":0}],
 "compute": ({ type, amount, rate, years, slabRate }) => {
       const p = Number(amount) || 0;
       const r = (Number(rate) || 0) / 100;
@@ -126,7 +144,7 @@ window.TOOLS["fd-rd-calculator"] = {
         invested = p;
         maturity = p * Math.pow(1 + r / 4, 4 * t);
       } else {
-        const n = Math.round(t * 12);
+        const n = Math.max(0, Math.min(600, Math.round(t * 12)));
         invested = p * n;
         maturity = 0;
         for (let m = 0; m < n; m++) {

@@ -107,6 +107,24 @@ function surchargeRate(income, table) {
 }
 
 
+function countWeekdays(a, b) {
+  const MS = 86400000;
+  const start = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
+  const end = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
+  const days = Math.max(0, Math.round((end - start) / MS));
+
+  const whole = Math.floor(days / 7);
+  let count = whole * 5;
+
+  let dow = new Date(start).getUTCDay();
+  for (let i = 0; i < days % 7; i++) {
+    if (dow !== 0 && dow !== 6) count++;
+    dow = (dow + 1) % 7;
+  }
+  return count;
+}
+
+
 window.TOOLS = window.TOOLS || {};
 window.TOOLS["nps-calculator"] = {
 "currency": "INR",
@@ -117,7 +135,7 @@ window.TOOLS["nps-calculator"] = {
 "formula": "corpus compounds monthly; at least 40% must buy an annuity",
 "inputs": [{"key":"monthly","label":"Monthly contribution","type":"number","unit":"₹","default":10000,"min":0},{"key":"age","label":"Current age","type":"number","default":30,"min":18,"max":65},{"key":"rate","label":"Expected annual return","type":"number","unit":"%","default":10,"step":0.5},{"key":"annuityPct","label":"Share used to buy annuity","type":"number","unit":"%","default":40,"min":40,"max":100},{"key":"annuityRate","label":"Expected annuity rate","type":"number","unit":"%","default":6,"step":0.25}],
 "compute": ({ monthly, age, rate, annuityPct, annuityRate }) => {
-      const years = Math.max(0, 60 - (Number(age) || 30));
+      const years = Math.max(0, Math.min(60, 60 - (Number(age) || 30)));
       const i = (Number(rate) || 0) / 100 / 12;
       const n = years * 12;
       const p = Number(monthly) || 0;

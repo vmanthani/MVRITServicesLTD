@@ -3,21 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Image Resizer &amp; Compressor — Free Online | MVR IT Services</title>
-<meta name="description" content="Resize, crop and compress images to WebP, JPEG or PNG without uploading them anywhere.">
-<link rel="canonical" href="https://www.mvritservices.com/tools/developer/image-resizer.html">
+<title>Image Format Converter — Free &amp; Private | MVR IT Services</title>
+<meta name="description" content="Convert between PNG, JPEG and WebP in your browser. No upload, no queue, no watermark.">
+<link rel="canonical" href="https://www.mvritservices.com/tools/image/image-converter.html">
 <meta name="theme-color" content="#06080f" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="MVR IT Services LTD">
 <meta property="og:locale" content="en_GB">
-<meta property="og:title" content="Image Resizer &amp; Compressor — Free Online | MVR IT Services">
-<meta property="og:description" content="Resize, crop and compress images to WebP, JPEG or PNG without uploading them anywhere.">
-<meta property="og:url" content="https://www.mvritservices.com/tools/developer/image-resizer.html">
+<meta property="og:title" content="Image Format Converter — Free &amp; Private | MVR IT Services">
+<meta property="og:description" content="Convert between PNG, JPEG and WebP in your browser. No upload, no queue, no watermark.">
+<meta property="og:url" content="https://www.mvritservices.com/tools/image/image-converter.html">
 <meta property="og:image" content="https://www.mvritservices.com/assets/img/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Image Resizer &amp; Compressor — Free Online | MVR IT Services">
-<meta name="twitter:description" content="Resize, crop and compress images to WebP, JPEG or PNG without uploading them anywhere.">
+<meta name="twitter:title" content="Image Format Converter — Free &amp; Private | MVR IT Services">
+<meta name="twitter:description" content="Convert between PNG, JPEG and WebP in your browser. No upload, no queue, no watermark.">
 <link rel="icon" href="../assets/favicon.ico" sizes="any">
 <link rel="icon" href="https://www.mvritservices.com/assets/img/logo.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
@@ -26,11 +26,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="../assets/app.css">
-<script src="../engine/render-dev.js" defer></script>
-<script src="../engine/dev-image-resizer.js" defer></script>
+<script src="../engine/imagecore.bundle.js" defer></script>
+<script src="../engine/zip.js" defer></script>
+<script src="../engine/render-image.js" defer></script>
+<script src="../engine/img-image-converter.js" defer></script>
 <script>/* set theme before first paint so there is no flash */
 (function(){try{var t=localStorage.getItem('mvr-theme');document.documentElement.setAttribute('data-theme',t==='light'||t==='system'?t:'dark');}catch(e){}})();</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","name":"Image Resizer & Compressor","description":"Resize, crop and compress images to WebP, JPEG or PNG without uploading them anywhere.","url":"https://www.mvritservices.com/tools/developer/image-resizer.html","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.mvritservices.com/tools"},{"@type":"ListItem","position":2,"name":"Developer & Web Tools","item":"https://www.mvritservices.com/tools/developer/index.html"},{"@type":"ListItem","position":3,"name":"Image Resizer & Compressor","item":"https://www.mvritservices.com/tools/developer/image-resizer.html"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does this upload my photos?","acceptedAnswer":{"@type":"Answer","text":"No. Everything happens on a canvas in your browser — the file is read locally, drawn, re-encoded and offered back as a download. Nothing is transmitted."}},{"@type":"Question","name":"Why did my PNG get bigger as a JPEG?","acceptedAnswer":{"@type":"Answer","text":"JPEG is poor at flat colour and sharp edges, which is where PNG excels. For screenshots, logos and diagrams, keep PNG or use WebP."}}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","name":"Image Format Converter","description":"Convert between PNG, JPEG and WebP in your browser. No upload, no queue, no watermark.","url":"https://www.mvritservices.com/tools/image/image-converter.html","applicationCategory":"MultimediaApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.mvritservices.com/tools"},{"@type":"ListItem","position":2,"name":"Image & Photo Tools","item":"https://www.mvritservices.com/tools/image/index.html"},{"@type":"ListItem","position":3,"name":"Image Format Converter","item":"https://www.mvritservices.com/tools/image/image-converter.html"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can you convert HEIC from my iPhone?","acceptedAnswer":{"@type":"Answer","text":"Not here. HEIC needs a decoder that browsers do not ship, and adding one would mean loading roughly a megabyte of extra code. On an iPhone you can set Camera to \"Most Compatible\" to capture JPEG directly."}}]}]}</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to main content</a>
@@ -48,7 +50,7 @@
 
     <div class="header-tools">
       <div class="search-wrap">
-        <input id="q" type="search" placeholder="Search 1,063 tools…" autocomplete="off" aria-label="Search tools">
+        <input id="q" type="search" placeholder="Search 1,082 tools…" autocomplete="off" aria-label="Search tools">
         <div id="results" class="search-results" hidden></div>
       </div>
       <div class="theme-switch" role="group" aria-label="Colour theme">
@@ -76,7 +78,7 @@
 
 <div class="layout container">
   <button class="sidebar-open" id="sidebarOpen" aria-expanded="false" aria-controls="sidebar">
-    <svg class="ico" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#i-grid"></use></svg><span>All 1,063 tools</span>
+    <svg class="ico" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#i-grid"></use></svg><span>All 1,082 tools</span>
   </button>
 
   <aside class="sidebar" id="sidebar" aria-label="Tool categories">
@@ -87,15 +89,18 @@
 
     <nav class="side-nav">
       <a class="side-link" href="../index.html">
-        <svg class="ico" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#i-home"></use></svg><span class="side-name">All tools</span><span class="side-count">1,063</span>
+        <svg class="ico" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#i-home"></use></svg><span class="side-name">All tools</span><span class="side-count">1,082</span>
       </a>
 
       <p class="side-group">Categories</p>
       <a class="side-link" href="../conversions/index.html">
         <svg class="ico" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#i-conversions"></use></svg><span class="side-name">Conversions</span><span class="side-count">1,004</span>
       </a>
-      <a class="side-link is-active" href="../developer/index.html">
-        <svg class="ico" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#i-developer"></use></svg><span class="side-name">Developer &amp; Web Tools</span><span class="side-count">19</span>
+      <a class="side-link is-active" href="../image/index.html">
+        <svg class="ico" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#i-image"></use></svg><span class="side-name">image</span><span class="side-count">20</span>
+      </a>
+      <a class="side-link" href="../developer/index.html">
+        <svg class="ico" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#i-developer"></use></svg><span class="side-name">Developer &amp; Web Tools</span><span class="side-count">18</span>
       </a>
       <a class="side-link" href="../india/index.html">
         <svg class="ico" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#i-india"></use></svg><span class="side-name">india</span><span class="side-count">15</span>
@@ -167,25 +172,25 @@
 
   <main id="main" class="content">
 
-<nav class="crumbs"><a href="../index.html">Home</a> › <a href="index.html">Developer &amp; Web Tools</a> › <span>Image Resizer &amp; Compressor</span></nav>
-<article class="tool" data-tool="image-resizer">
-  <p class="eyebrow">Developer &amp; Web Tools</p>
-  <h1><svg class="ico ico-title" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#i-image-resizer"></use></svg>Image Resizer &amp; Compressor</h1>
-  <p class="lede">Resize, crop and compress images to WebP, JPEG or PNG without uploading them anywhere.</p>
+<nav class="crumbs"><a href="../index.html">Home</a> › <a href="index.html">Image &amp; Photo Tools</a> › <span>Image Format Converter</span></nav>
+<article class="tool" data-tool="image-converter">
+  <p class="eyebrow">Image &amp; Photo Tools</p>
+  <h1><svg class="ico ico-title" aria-hidden="true" focusable="false"><use href="../assets/icons.svg#i-image-converter"></use></svg>Image Format Converter</h1>
+  <p class="lede">Convert between PNG, JPEG and WebP in your browser. No upload, no queue, no watermark.</p>
   <div class="tool-io"></div>
-  <section class="panel"><h2>Privacy</h2><p class="privacy-line">Everything on this page runs inside your browser. Nothing you paste, type or upload is transmitted, logged or stored.</p></section>
-  <section class="panel"><h2>Tips</h2><ul class="tips"><li>WebP typically saves 25–35% over JPEG at the same visual quality, and every current browser supports it.</li><li>Quality 80 is the usual sweet spot for photographs. Above 90 the file grows fast for differences almost nobody can see.</li><li>Never serve an image larger than the space it occupies. A 4000px photo in a 800px column wastes most of what the visitor downloads.</li><li>PNG is for flat graphics and transparency. Photographs saved as PNG are typically several times larger than they need to be.</li></ul></section><section class="panel"><h2>Frequently asked questions</h2><details><summary>Does this upload my photos?</summary><p>No. Everything happens on a canvas in your browser — the file is read locally, drawn, re-encoded and offered back as a download. Nothing is transmitted.</p></details><details><summary>Why did my PNG get bigger as a JPEG?</summary><p>JPEG is poor at flat colour and sharp edges, which is where PNG excels. For screenshots, logos and diagrams, keep PNG or use WebP.</p></details></section>
-  <section class="panel"><h2>Related tools</h2><ul class="related"><li><a href="json-formatter.html">JSON Formatter &amp; Validator</a></li><li><a href="xml-formatter.html">XML Formatter &amp; Validator</a></li><li><a href="csv-to-json.html">CSV to JSON Converter</a></li><li><a href="base64.html">Base64 Encoder &amp; Decoder</a></li><li><a href="url-encoder.html">URL Encoder &amp; Decoder</a></li><li><a href="html-entities.html">HTML Entity Encoder &amp; Decoder</a></li><li><a href="jwt-decoder.html">JWT Decoder</a></li><li><a href="meta-tag-generator.html">Meta Tag &amp; Open Graph Generator</a></li></ul></section>
+  <section class="panel"><h2>Privacy</h2><p class="privacy-line">Your images never leave your device. Files are decoded and redrawn by your own browser using the Canvas API, so nothing is uploaded, queued or logged.</p></section>
+  <section class="panel"><h2>Tips</h2><ul class="tips"><li>JPEG has no alpha channel. Converting a transparent PNG to JPEG fills the transparency with the background colour chosen above.</li><li>PNG is lossless, so the quality slider has no effect on it — the setting applies to JPEG and WebP only.</li><li>Converting JPEG to PNG will not restore detail already lost. It usually just produces a much larger file.</li></ul></section><section class="panel"><h2>Frequently asked questions</h2><details><summary>Can you convert HEIC from my iPhone?</summary><p>Not here. HEIC needs a decoder that browsers do not ship, and adding one would mean loading roughly a megabyte of extra code. On an iPhone you can set Camera to &quot;Most Compatible&quot; to capture JPEG directly.</p></details></section>
+  <section class="panel"><h2>Related tools</h2><ul class="related"><li><a href="image-compressor.html">Image Compressor</a></li><li><a href="bulk-image-resizer.html">Bulk Image Resizer</a></li><li><a href="image-cropper.html">Image Cropper</a></li><li><a href="social-media-resizer.html">Social Media Image Resizer</a></li><li><a href="circle-crop.html">Circle Crop / Avatar Maker</a></li><li><a href="image-border.html">Add Border &amp; Frame to Image</a></li><li><a href="image-rotate-flip.html">Rotate &amp; Flip Image</a></li><li><a href="photo-filters.html">Photo Filters &amp; Adjustments</a></li></ul></section>
 </article>
 <script>
 document.addEventListener('DOMContentLoaded',function(){
-  var spec = window.DEV_TOOLS['image-resizer'];
-  spec.id = 'image-resizer';
+  var spec = window.IMAGE_TOOLS['image-converter'];
+  spec.id = 'image-converter';
   var root = document.querySelector('.tool');
-  try { MVRTool.mountFile(spec, root); }
+  try { MVRTool.mountImage(spec, root); }
   catch (e) {
     root.querySelector('.tool-io').innerHTML =
-      '<div class="io-msg is-error">This tool needs JavaScript features your browser does not support. Try a current version of Chrome, Firefox, Edge or Safari.</div>';
+      '<div class="io-msg is-error">This tool needs browser features yours does not support. Try a current version of Chrome, Firefox, Edge or Safari.</div>';
   }
 });
 </script>

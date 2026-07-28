@@ -226,7 +226,7 @@ window.DEV_TOOLS["htaccess-generator"] = {
 "title": ".htaccess Snippet Generator",
 "category": "developer",
 "icon": "⚙️",
-"kind": "code",
+"kind": "generate",
 "description": "Generate Apache rules for HTTPS redirects, www handling, caching, compression and security headers.",
 "keywords": ["htaccess generator","apache redirect","force https","www redirect","htaccess cache"],
 "inputLabel": null,

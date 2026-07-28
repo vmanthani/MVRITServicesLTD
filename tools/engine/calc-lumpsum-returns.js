@@ -107,6 +107,24 @@ function surchargeRate(income, table) {
 }
 
 
+function countWeekdays(a, b) {
+  const MS = 86400000;
+  const start = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
+  const end = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
+  const days = Math.max(0, Math.round((end - start) / MS));
+
+  const whole = Math.floor(days / 7);
+  let count = whole * 5;
+
+  let dow = new Date(start).getUTCDay();
+  for (let i = 0; i < days % 7; i++) {
+    if (dow !== 0 && dow !== 6) count++;
+    dow = (dow + 1) % 7;
+  }
+  return count;
+}
+
+
 window.TOOLS = window.TOOLS || {};
 window.TOOLS["lumpsum-returns"] = {
 "currency": "INR",
@@ -115,7 +133,7 @@ window.TOOLS["lumpsum-returns"] = {
 "description": "Future value and annualised return on a one-time investment, with inflation-adjusted worth.",
 "keywords": ["lumpsum calculator","mutual fund calculator","compound interest India","investment returns","CAGR calculator"],
 "formula": "FV = P × (1 + r)ⁿ",
-"inputs": [{"key":"principal","label":"Investment amount","type":"number","unit":"₹","default":500000,"min":0},{"key":"rate","label":"Expected annual return","type":"number","unit":"%","default":12,"step":0.1},{"key":"years","label":"Investment period","type":"number","unit":"years","default":10,"min":0},{"key":"inflation","label":"Assumed inflation","type":"number","unit":"%","default":6,"step":0.1}],
+"inputs": [{"key":"principal","label":"Investment amount","type":"number","unit":"₹","default":500000,"min":0},{"key":"rate","label":"Expected annual return","type":"number","unit":"%","default":12,"step":0.1},{"key":"years","label":"Investment period","type":"number","unit":"years","default":10,"min":0,"max":100},{"key":"inflation","label":"Assumed inflation","type":"number","unit":"%","default":6,"step":0.1}],
 "compute": ({ principal, rate, years, inflation }) => {
       const p = Number(principal) || 0;
       const r = (Number(rate) || 0) / 100;

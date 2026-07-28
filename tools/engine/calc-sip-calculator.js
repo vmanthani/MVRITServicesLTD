@@ -107,6 +107,24 @@ function surchargeRate(income, table) {
 }
 
 
+function countWeekdays(a, b) {
+  const MS = 86400000;
+  const start = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
+  const end = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
+  const days = Math.max(0, Math.round((end - start) / MS));
+
+  const whole = Math.floor(days / 7);
+  let count = whole * 5;
+
+  let dow = new Date(start).getUTCDay();
+  for (let i = 0; i < days % 7; i++) {
+    if (dow !== 0 && dow !== 6) count++;
+    dow = (dow + 1) % 7;
+  }
+  return count;
+}
+
+
 window.TOOLS = window.TOOLS || {};
 window.TOOLS["sip-calculator"] = {
 "currency": "INR",
@@ -115,10 +133,10 @@ window.TOOLS["sip-calculator"] = {
 "description": "Project the future value of a systematic investment plan, with optional annual step-up.",
 "keywords": ["SIP calculator","systematic investment plan","mutual fund SIP","SIP returns","step up SIP"],
 "formula": "FV = P × [((1+i)ⁿ − 1) / i] × (1+i)",
-"inputs": [{"key":"monthly","label":"Monthly investment","type":"number","unit":"₹","default":10000,"min":0},{"key":"rate","label":"Expected annual return","type":"number","unit":"%","default":12,"step":0.1},{"key":"years","label":"Investment period","type":"number","unit":"years","default":15,"min":0},{"key":"stepup","label":"Annual step-up","type":"number","unit":"%","default":0,"min":0,"step":0.5}],
+"inputs": [{"key":"monthly","label":"Monthly investment","type":"number","unit":"₹","default":10000,"min":0},{"key":"rate","label":"Expected annual return","type":"number","unit":"%","default":12,"step":0.1},{"key":"years","label":"Investment period","type":"number","unit":"years","default":15,"min":0,"max":100},{"key":"stepup","label":"Annual step-up","type":"number","unit":"%","default":0,"min":0,"step":0.5}],
 "compute": ({ monthly, rate, years, stepup }) => {
       const i = (Number(rate) || 0) / 100 / 12;
-      const n = Math.round((Number(years) || 0) * 12);
+      const n = Math.max(0, Math.min(1200, Math.round((Number(years) || 0) * 12)));  // cap at 100 years
       const step = (Number(stepup) || 0) / 100;
 
       let value = 0, invested = 0, contribution = Number(monthly) || 0;

@@ -226,7 +226,7 @@ window.DEV_TOOLS["css-gradient"] = {
 "title": "CSS Gradient Generator",
 "category": "developer",
 "icon": "🌈",
-"kind": "code",
+"kind": "generate",
 "description": "Build linear and radial CSS gradients with a live preview and copy-ready code.",
 "keywords": ["css gradient generator","linear gradient","radial gradient","gradient css","background gradient"],
 "inputLabel": null,

@@ -107,6 +107,24 @@ function surchargeRate(income, table) {
 }
 
 
+function countWeekdays(a, b) {
+  const MS = 86400000;
+  const start = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
+  const end = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
+  const days = Math.max(0, Math.round((end - start) / MS));
+
+  const whole = Math.floor(days / 7);
+  let count = whole * 5;
+
+  let dow = new Date(start).getUTCDay();
+  for (let i = 0; i < days % 7; i++) {
+    if (dow !== 0 && dow !== 6) count++;
+    dow = (dow + 1) % 7;
+  }
+  return count;
+}
+
+
 window.TOOLS = window.TOOLS || {};
 window.TOOLS["invoice-payment-terms"] = {
 "currency": "GBP",

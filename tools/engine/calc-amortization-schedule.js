@@ -107,6 +107,24 @@ function surchargeRate(income, table) {
 }
 
 
+function countWeekdays(a, b) {
+  const MS = 86400000;
+  const start = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
+  const end = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
+  const days = Math.max(0, Math.round((end - start) / MS));
+
+  const whole = Math.floor(days / 7);
+  let count = whole * 5;
+
+  let dow = new Date(start).getUTCDay();
+  for (let i = 0; i < days % 7; i++) {
+    if (dow !== 0 && dow !== 6) count++;
+    dow = (dow + 1) % 7;
+  }
+  return count;
+}
+
+
 window.TOOLS = window.TOOLS || {};
 window.TOOLS["amortization-schedule"] = {
 "currency": "GBP",
@@ -115,7 +133,7 @@ window.TOOLS["amortization-schedule"] = {
 "description": "Full payment-by-payment breakdown of principal, interest and remaining balance, with optional overpayments.",
 "keywords": ["amortization schedule","amortisation calculator","loan schedule","mortgage schedule","principal and interest breakdown"],
 "formula": "M = P · [r(1+r)ⁿ] / [(1+r)ⁿ − 1]",
-"inputs": [{"key":"amount","label":"Loan amount","type":"number","unit":"£","default":200000,"min":0},{"key":"rate","label":"Annual interest rate","type":"number","unit":"%","default":5.5,"step":0.01},{"key":"years","label":"Term","type":"number","unit":"years","default":25,"min":0},{"key":"overpay","label":"Extra payment each month","type":"number","unit":"£","default":0,"min":0},{"key":"view","label":"Schedule detail","type":"select","options":[{"value":"annual","label":"Annual summary"},{"value":"monthly","label":"Monthly (first 5 years)"}],"default":"annual"}],
+"inputs": [{"key":"amount","label":"Loan amount","type":"number","unit":"£","default":200000,"min":0},{"key":"rate","label":"Annual interest rate","type":"number","unit":"%","default":5.5,"step":0.01},{"key":"years","label":"Term","type":"number","unit":"years","default":25,"min":0,"max":100},{"key":"overpay","label":"Extra payment each month","type":"number","unit":"£","default":0,"min":0},{"key":"view","label":"Schedule detail","type":"select","options":[{"value":"annual","label":"Annual summary"},{"value":"monthly","label":"Monthly (first 5 years)"}],"default":"annual"}],
 "compute": ({ amount, rate, years, overpay, view }) => {
       if (!amount || !years) return { note: 'Enter a loan amount and a term.' };
       const r = rate / 100 / 12;

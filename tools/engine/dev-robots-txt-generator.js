@@ -226,7 +226,7 @@ window.DEV_TOOLS["robots-txt-generator"] = {
 "title": "robots.txt Generator",
 "category": "developer",
 "icon": "🤖",
-"kind": "code",
+"kind": "generate",
 "description": "Build a valid robots.txt with crawl rules, sitemap references and common bot presets.",
 "keywords": ["robots.txt generator","robots txt","crawler rules","disallow","seo robots"],
 "inputLabel": null,

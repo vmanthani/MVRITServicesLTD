@@ -107,6 +107,24 @@ function surchargeRate(income, table) {
 }
 
 
+function countWeekdays(a, b) {
+  const MS = 86400000;
+  const start = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
+  const end = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
+  const days = Math.max(0, Math.round((end - start) / MS));
+
+  const whole = Math.floor(days / 7);
+  let count = whole * 5;
+
+  let dow = new Date(start).getUTCDay();
+  for (let i = 0; i < days % 7; i++) {
+    if (dow !== 0 && dow !== 6) count++;
+    dow = (dow + 1) % 7;
+  }
+  return count;
+}
+
+
 window.TOOLS = window.TOOLS || {};
 window.TOOLS["emi-calculator"] = {
 "currency": "INR",
@@ -115,11 +133,11 @@ window.TOOLS["emi-calculator"] = {
 "description": "Equated monthly instalment for home, car or personal loans, with the full repayment schedule.",
 "keywords": ["EMI calculator","home loan EMI","car loan EMI","personal loan calculator","loan EMI India","amortisation schedule"],
 "formula": "EMI = P × r × (1+r)ⁿ / ((1+r)ⁿ − 1)",
-"inputs": [{"key":"amount","label":"Loan amount","type":"number","unit":"₹","default":5000000,"min":0},{"key":"rate","label":"Annual interest rate","type":"number","unit":"%","default":8.5,"step":0.05},{"key":"years","label":"Tenure","type":"number","unit":"years","default":20,"min":0},{"key":"prepay","label":"Extra payment each month","type":"number","unit":"₹","default":0,"min":0}],
+"inputs": [{"key":"amount","label":"Loan amount","type":"number","unit":"₹","default":5000000,"min":0},{"key":"rate","label":"Annual interest rate","type":"number","unit":"%","default":8.5,"step":0.05},{"key":"years","label":"Tenure","type":"number","unit":"years","default":20,"min":0,"max":50},{"key":"prepay","label":"Extra payment each month","type":"number","unit":"₹","default":0,"min":0}],
 "compute": ({ amount, rate, years, prepay }) => {
       const p = Number(amount) || 0;
       const r = (Number(rate) || 0) / 100 / 12;
-      const n = Math.round((Number(years) || 0) * 12);
+      const n = Math.max(0, Math.min(600, Math.round((Number(years) || 0) * 12)));  // cap at 50 years
       if (!p || !n) return { note: 'Enter a loan amount and tenure.' };
 
       const emi = r === 0 ? p / n : p * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1);

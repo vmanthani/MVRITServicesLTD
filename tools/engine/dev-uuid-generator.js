@@ -226,7 +226,7 @@ window.DEV_TOOLS["uuid-generator"] = {
 "title": "UUID Generator",
 "category": "developer",
 "icon": "🆔",
-"kind": "code",
+"kind": "generate",
 "description": "Generate cryptographically random version 4 UUIDs, singly or in bulk.",
 "keywords": ["uuid generator","guid generator","uuid v4","random id","unique identifier"],
 "inputLabel": null,

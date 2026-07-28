@@ -226,7 +226,7 @@ window.DEV_TOOLS["meta-tag-generator"] = {
 "title": "Meta Tag & Open Graph Generator",
 "category": "developer",
 "icon": "🏷️",
-"kind": "code",
+"kind": "generate",
 "description": "Generate SEO meta tags, Open Graph and Twitter Card markup, with live length warnings.",
 "keywords": ["meta tag generator","open graph generator","twitter card","seo meta tags","og tags"],
 "inputLabel": null,

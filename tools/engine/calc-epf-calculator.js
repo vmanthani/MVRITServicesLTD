@@ -107,6 +107,24 @@ function surchargeRate(income, table) {
 }
 
 
+function countWeekdays(a, b) {
+  const MS = 86400000;
+  const start = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
+  const end = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
+  const days = Math.max(0, Math.round((end - start) / MS));
+
+  const whole = Math.floor(days / 7);
+  let count = whole * 5;
+
+  let dow = new Date(start).getUTCDay();
+  for (let i = 0; i < days % 7; i++) {
+    if (dow !== 0 && dow !== 6) count++;
+    dow = (dow + 1) % 7;
+  }
+  return count;
+}
+
+
 window.TOOLS = window.TOOLS || {};
 window.TOOLS["epf-calculator"] = {
 "currency": "INR",
@@ -117,7 +135,7 @@ window.TOOLS["epf-calculator"] = {
 "formula": "employee 12% of basic; employer 12% split 8.33% to EPS (capped) and the rest to EPF",
 "inputs": [{"key":"basic","label":"Monthly basic + DA","type":"number","unit":"₹","default":50000,"min":0},{"key":"age","label":"Current age","type":"number","default":30,"min":15,"max":60},{"key":"retire","label":"Retirement age","type":"number","default":58,"min":40,"max":70},{"key":"rate","label":"EPF interest rate","type":"number","unit":"%","default":8.25,"step":0.05},{"key":"growth","label":"Annual salary growth","type":"number","unit":"%","default":7,"step":0.5},{"key":"existing","label":"Existing EPF balance","type":"number","unit":"₹","default":0,"min":0}],
 "compute": ({ basic, age, retire, rate, growth, existing }) => {
-      const years = Math.max(0, (Number(retire) || 58) - (Number(age) || 30));
+      const years = Math.max(0, Math.min(60, (Number(retire) || 58) - (Number(age) || 30)));
       const r = (Number(rate) || 0) / 100 / 12;
       const g = (Number(growth) || 0) / 100;
 

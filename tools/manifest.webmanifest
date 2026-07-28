@@ -1,7 +1,7 @@
 {
   "name": "MVR IT Services — Tools",
   "short_name": "MVR Tools",
-  "description": "1,063 free calculators and converters from MVR IT Services. Works offline.",
+  "description": "1,082 free calculators and converters from MVR IT Services. Works offline.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

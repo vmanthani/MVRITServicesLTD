@@ -107,6 +107,24 @@ function surchargeRate(income, table) {
 }
 
 
+function countWeekdays(a, b) {
+  const MS = 86400000;
+  const start = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
+  const end = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
+  const days = Math.max(0, Math.round((end - start) / MS));
+
+  const whole = Math.floor(days / 7);
+  let count = whole * 5;
+
+  let dow = new Date(start).getUTCDay();
+  for (let i = 0; i < days % 7; i++) {
+    if (dow !== 0 && dow !== 6) count++;
+    dow = (dow + 1) % 7;
+  }
+  return count;
+}
+
+
 window.TOOLS = window.TOOLS || {};
 window.TOOLS["depreciation"] = {
 "currency": "GBP",
@@ -115,9 +133,10 @@ window.TOOLS["depreciation"] = {
 "description": "Straight-line, reducing balance, sum-of-years and units of production, with a full year-by-year schedule.",
 "keywords": ["depreciation calculator","straight line depreciation","reducing balance","declining balance","asset depreciation","depreciation schedule"],
 "formula": "straight line = (cost − salvage) / life",
-"inputs": [{"key":"method","label":"Method","type":"select","options":[{"value":"sl","label":"Straight line"},{"value":"db","label":"Reducing (declining) balance"},{"value":"ddb","label":"Double declining balance"},{"value":"syd","label":"Sum of years digits"}],"default":"sl"},{"key":"cost","label":"Asset cost","type":"number","unit":"£","default":50000,"min":0},{"key":"salvage","label":"Residual / salvage value","type":"number","unit":"£","default":5000,"min":0},{"key":"life","label":"Useful life","type":"number","unit":"years","default":5,"min":1},{"key":"dbRate","label":"Reducing balance rate","type":"number","unit":"%","default":25,"min":0}],
+"inputs": [{"key":"method","label":"Method","type":"select","options":[{"value":"sl","label":"Straight line"},{"value":"db","label":"Reducing (declining) balance"},{"value":"ddb","label":"Double declining balance"},{"value":"syd","label":"Sum of years digits"}],"default":"sl"},{"key":"cost","label":"Asset cost","type":"number","unit":"£","default":50000,"min":0},{"key":"salvage","label":"Residual / salvage value","type":"number","unit":"£","default":5000,"min":0},{"key":"life","label":"Useful life","type":"number","unit":"years","default":5,"min":1,"max":200},{"key":"dbRate","label":"Reducing balance rate","type":"number","unit":"%","default":25,"min":0}],
 "compute": ({ method, cost, salvage, life, dbRate }) => {
-      const n = Math.max(1, Math.round(life));
+      // hard cap: a user typing a huge life would otherwise loop that many times
+      const n = Math.max(1, Math.min(200, Math.round(Number(life) || 1)));
       if (cost <= 0) return { note: 'Enter the asset cost.' };
       if (salvage > cost) return { note: 'Residual value cannot exceed the asset cost.' };
 

@@ -226,7 +226,7 @@ window.DEV_TOOLS["color-converter"] = {
 "title": "Colour Converter & Contrast Checker",
 "category": "developer",
 "icon": "🎨",
-"kind": "code",
+"kind": "generate",
 "description": "Convert between HEX, RGB, HSL and HSB, and check WCAG contrast against a background.",
 "keywords": ["color converter","hex to rgb","rgb to hex","hsl converter","contrast checker","wcag contrast"],
 "inputLabel": null,

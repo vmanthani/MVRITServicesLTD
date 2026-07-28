@@ -226,7 +226,7 @@ window.DEV_TOOLS["lorem-ipsum"] = {
 "title": "Lorem Ipsum Generator",
 "category": "developer",
 "icon": "📄",
-"kind": "code",
+"kind": "generate",
 "description": "Generate placeholder text by paragraphs, sentences or words — classical Latin or plain English.",
 "keywords": ["lorem ipsum","placeholder text","dummy text","filler text","sample text"],
 "inputLabel": null,
